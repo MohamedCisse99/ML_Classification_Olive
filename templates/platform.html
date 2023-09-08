@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: green;
+            color: white;
+            font-family: "Times New Roman", Times, serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        #video-bg {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+        }
+        
+        #upload-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        #upload-form input[type="submit"] {
+            background-color: green;
+            font-family: "Times New Roman", Times, serif;
+            color: white;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+        
+        #upload-form input[type="submit"]:hover {
+            background-color: darkgreen;
+        }
+        
+        #upload-form label {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        #copyright {
+            font-size: 15px;
+            margin-top: 100px;
+            text-align: center;
+        }
+    </style>
+    <title>MohLearning</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='LOGO MohLearning.png') }}">
+</head>
+<body>
+    <video id="video-bg" autoplay muted loop>
+        <source src="nature_video.mp4" type="video/mp4">
+    </video>
+    
+    <div id="upload-container">
+        <h1>Machine Learning Project : VARIETES D'OLIVIER</h1>
+        
+        <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+            <label for="image-upload">Choisir une image de noyau d'olivier :</label>
+            <input type="file" id="image-upload" name="image" accept="image/*">
+            <input type="submit" value="Soumettre Image">
+        </form>
+        <br> <h2 id="upload-form" ><b>{{pred}}</b></h2><br>
+        <div id="copyright">
+            &copy; 2023 Mohamed Cissé &amp; Amadou Sanogo
+        </div>
+    </div>
+    
+</body>
+</html>
